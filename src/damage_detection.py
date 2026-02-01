@@ -1,5 +1,6 @@
 import cv2
 from ultralytics import YOLO
+from src.database import save_detection
 
 model = YOLO("yolov8n.pt")  # lightweight model
 
