@@ -1,12 +1,52 @@
-<h2>Detection Logs</h2>
-<table border="1">
-<tr><th>ID</th><th>Type</th><th>Confidence</th><th>Time</th></tr>
-{% for row in data %}
-<tr>
-<td>{{row[0]}}</td>
-<td>{{row[1]}}</td>
-<td>{{row[2]}}</td>
-<td>{{row[3]}}</td>
-</tr>
-{% endfor %}
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart AI Car Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚗 Smart AI Car Vision Dashboard</h1>
+    <p class="subtitle">Real-time Road Damage & Lane Monitoring System</p>
+
+    <div class="stats">
+        <div class="card">
+            <h3>Total Detections</h3>
+            <p>{{ data|length }}</p>
+        </div>
+        <div class="card">
+            <h3>System Status</h3>
+            <p class="status">🟢 Running</p>
+        </div>
+    </div>
+
+    <h2>Detection Logs</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Confidence</th>
+            <th>Timestamp</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td class="type">{{ row[1] }}</td>
+            <td>{{ "%.2f"|format(row[2]) }}</td>
+            <td>{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <footer>
+        AI Smart Car Project • Computer Vision + Machine Learning
+    </footer>
+</div>
+
+</body>
+</html>
